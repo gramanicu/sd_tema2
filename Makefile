@@ -63,6 +63,7 @@ purge:
 	rm -f checkstyle.txt
 	rm -f README
 	rm -f $(ANAME)
+	rm -f time.out
 	rm -f time.err
 	echo "All files were removed"
 
@@ -80,4 +81,5 @@ gitignore:
 	@echo "sources/*.o" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	@echo "time.out" >> .gitignore ||:
+	@echo "time.err*" >> .gitignore ||:
 	echo "Updated .gitignore"
