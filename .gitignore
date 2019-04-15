@@ -1,0 +1,12 @@
+checkstyle.txt
+check.sh
+out*
+in*
+ref*
+cpplint.py
+README
+312CA_GramaNicolae_Tema2.zip
+tema2
+sources/*.o
+.vscode*
+time.out
