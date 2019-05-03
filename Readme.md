@@ -2,9 +2,12 @@
 
 ## TO DO
 
+- !Important! - read data (solve task1, task2, task3)
 - Implement hashtable
-- Implement generic graph
 - Move quicksort
+
+## To research
+
 - Smart pointers ?
 - Prealocated memory ?
 

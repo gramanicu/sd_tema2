@@ -23,6 +23,18 @@ class Citymap {
         map.addLink2Way(src, dest);
     }
 
+    void removeStreet(const std::string& src, const std::string& dest) {
+        map.removeLink(src, dest);
+    }
+
+    void remove2WayStret(const std::string& src, const std::string& dest) {
+        map.removeLink2Way(src, dest);
+    }
+
+    void switchWay(const std::string& src, const std::string& dest) {
+        map.switchLinks(src, dest);
+    }
+
     void printMap() { map.printMatrix(); }
 
     bool routeExist(const std::string& src, const std::string& dest) {

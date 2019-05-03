@@ -79,6 +79,42 @@ class Graph {
         matrix[id2][id1] = 1;
     }
 
+    // Removes the link from two nodes
+    void removeLink(const T& src, const T& dest) {
+        int id1 = getId(src);
+        if (id1 == -1) return;
+
+        int id2 = getId(dest);
+        if (id2 == -1) return;
+
+        matrix[id1][id2] = 0;
+    }
+
+    // Removes all links from two nodes
+    void removeLink2Way(const T& src, const T& dest) {
+        int id1 = getId(src);
+        if (id1 == -1) return;
+
+        int id2 = getId(dest);
+        if (id2 == -1) return;
+
+        matrix[id1][id2] = 0;
+        matrix[id2][id1] = 0;
+    }
+
+    // Switches the links between nodes
+    void switchLinks(const T& src, const T& dest) {
+        int id1 = getId(src);
+        if (id1 == -1) return;
+
+        int id2 = getId(dest);
+        if (id2 == -1) return;
+
+        int8_t aux = matrix[id1][id2];
+        matrix[id1][id2] = matrix[id2][id1];
+        matrix[id2][id1] = aux;
+    }
+
     // Find the length of the shortest path between two nodes
     // The algorithm is described in README
     int32_t dijkstra(const T& src, const T& dest) {
