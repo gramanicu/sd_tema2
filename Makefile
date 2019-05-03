@@ -41,10 +41,15 @@ clean:
 	rm -f $(EXE) $(OBJ)
 	echo "Deleted the binary and object files"
 
-# Automatic coding style, using google standard.
+# Automatic coding style, according to homework regulations
 beauty:
 	clang-format -i -style=file */*.cpp
 	clang-format -i -style=google */*.h
+
+# Automatic coding style, in my personal style
+beauty-development:
+	clang-format -i -style=file */*.cpp
+	clang-format -i -style=file */*.h
 
 # Checks the memory for leaks
 MFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes

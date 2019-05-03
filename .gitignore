@@ -10,3 +10,4 @@ tema2
 sources/*.o
 .vscode*
 time.out
+time.err*
