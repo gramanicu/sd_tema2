@@ -3,6 +3,7 @@
 The most important data structure used to solve this homework is a generic Graph. It is implemented using an adjacency matrix. Also, every node has an index, and another templated value. For this problem (as it was implemented in the wrapper class "Citymap"), the other value was the name of an intersection. The graph has implemented simple operations to link nodes, remove the link, switch the direction of the link, etc.. But, one essential method implemented is dijkstra. This is a pathfinding algorithm.
 
 ## Disktra
+
 My implementation was based on this steps, which describe the algorithm (on the [wikepedia page](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm))
 
 - Mark all nodes unvisited. Create a set of all the unvisited nodes called the unvisited set.
