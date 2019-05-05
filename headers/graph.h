@@ -1,9 +1,8 @@
 #ifndef HEADERS_GRAPH_H_
 #define HEADERS_GRAPH_H_
 
-#include <iostream>
 #include <queue>
-#include <vector>
+#include "hashtable.h"
 
 // Default maximum number of nodes
 #define MAX_DIM 500
@@ -14,24 +13,12 @@ class Graph {
     // The matrix of nodes
     std::vector<std::vector<int8_t>> matrix;
 
-    // Link between id's and names
-    std::vector<T> nodes;
+    // Link between id's and a key
+    Hashtable<T, u_int32_t> nodes;
 
-    // Gets the ID
-    // !!! ATTENTION - the nodes must be sorted !!!
-    int getId(const T& data) const {
-        int index = -1;
-        for (auto& i : nodes) {
-            index++;
-            if (i == data) {
-                return index;
-            }
-
-            if (i > data) {
-                return -1;
-            }
-        }
-        return -1;
+    // Gets the id
+    u_int32_t getId(const T& key) const {
+        return nodes.Search(key);
     }
 
    public:
@@ -54,7 +41,9 @@ class Graph {
     }
 
     // Add a new node
-    void addNode(const T& data) { nodes.push_back(data); }
+    void addNode(const T& data) { 
+        nodes.Insert(data, nodes.size);
+    }
 
     // Link two nodes
     void addLink(const T& src, const T& dest) {
@@ -131,7 +120,7 @@ class Graph {
         std::vector<int32_t> dist;
         std::vector<int32_t> parent;
 
-        for (uint32_t i = 0; i < nodes.size(); i++) {
+        for (uint32_t i = 0; i < nodes.size; i++) {
             visited.push_back(false);
             dist.push_back(MAX_DIM);
             parent.push_back(-1);
@@ -142,7 +131,7 @@ class Graph {
         dist[sId] = 0;
 
         while (q.size()) {
-            for (uint32_t i = 0; i < nodes.size(); i++) {
+            for (uint32_t i = 0; i < nodes.size; i++) {
                 // If it is a neighbour
                 if (matrix[q.front()][i] == 1 && int32_t(i) != q.front()) {
                     if (visited[i] == false) {
@@ -174,8 +163,8 @@ class Graph {
 
     // Print the adjacency matrix
     void printMatrix() const {
-        for (u_int32_t i = 0; i < nodes.size(); i++) {
-            for (u_int32_t j = 0; j < nodes.size(); j++) {
+        for (u_int32_t i = 0; i < nodes.size; i++) {
+            for (u_int32_t j = 0; j < nodes.size; j++) {
                 std::cout << static_cast<int>(matrix[i][j]) << " ";
             }
             std::cout << "\n";
