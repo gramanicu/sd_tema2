@@ -54,7 +54,7 @@ beauty-development:
 # Checks the memory for leaks
 MFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
 memory:build
-	valgrind $(MFLAGS) ./$(EXE)
+	valgrind $(MFLAGS) ./$(EXE) in/test1.in
 
 # Verifies the homework using the checker
 check:build
@@ -67,6 +67,7 @@ purge:
 	rm -f $(EXE) $(OBJ)
 	rm -f checkstyle.txt
 	rm -f README
+	rm -rf ./out
 	rm -f $(ANAME)
 	rm -f time.out
 	rm -f time.err

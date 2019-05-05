@@ -10,7 +10,8 @@ class Citymap {
     Graph<std::string> map;
 
    public:
-    Citymap(){};
+    Citymap(u_int32_t size = MAX_DIM){};
+
     ~Citymap(){};
 
     void addIntersection(const std::string& name) { map.addNode(name); }

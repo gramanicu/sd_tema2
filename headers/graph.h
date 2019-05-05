@@ -37,7 +37,7 @@ class Graph {
    public:
     // Constructor - initializes the matrix with 0's
     //             - also adds 1's on the main diagonal
-    Graph(u_int32_t size = MAX_DIM)
+    Graph(const u_int32_t size = MAX_DIM)
         : matrix(size, std::vector<int8_t>(size, 0)) {
         for (u_int32_t i = 0; i < size; i++) {
             matrix[i][i] = 1;
@@ -152,9 +152,11 @@ class Graph {
                         dist[i] = dist[q.front()] + 1;
                         parent[i] = q.front();
                     } else {
-                        if (dist[parent[i]] == dist[q.front()]) {
-                            dist[i] = dist[q.front()] + 1;
-                            parent[i] = q.front();
+                        if(parent[i]!=-1) {
+                            if (dist[parent[i]] == dist[q.front()]) {
+                                dist[i] = dist[q.front()] + 1;
+                                parent[i] = q.front();
+                            }
                         }
                     }
                 }
